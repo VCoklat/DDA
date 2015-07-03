@@ -1,121 +1,164 @@
 PImage img;
-int[] x1,x2,y1,y2,longsor,banjir,gempa,angin,kebakaran;
- String[] nama;
+int[] x1,x2,y1,y2,input0,input1,input2,posx,posx1,banjir1;
+String[] nama;
  
 void setup() {
   size(1024,600);
   img = loadImage("Indonesia.png");
+  
   String[] stuff = loadStrings( "x1.txt");
   x1 = int(split(stuff[0], ','));
+
   String[] stuff1 = loadStrings( "x2.txt");
   x2 = int(split(stuff1[0], ','));
   String[] stuff2 = loadStrings( "y1.txt");
   y1 = int(split(stuff2[0], ','));
   String[] stuff3 = loadStrings( "y2.txt");
   y2 = int(split(stuff3[0], ','));
-  String[] b1 = loadStrings( "longsor.txt");
-  longsor = int(split(b1[0], ','));
-  String[] b2 = loadStrings( "banjir.txt");
-  banjir = int(split(b2[0], ','));
-  String[] b3 = loadStrings( "gempa.txt");
-  gempa = int(split(b3[0], ','));
-  String[] b4 = loadStrings( "angin.txt");
-  angin = int(split(b4[0], ','));
-  String[] b5 = loadStrings( "kebakaran.txt");
-  kebakaran = int(split(b5[0], ','));
-  String[] b6 = loadStrings( "nama.txt");
-  nama = split(b6[0], ',');
+  String[] x = loadStrings( "x11.txt");
+  posx = int(split(x[0], ','));
+  String[] x01 = loadStrings( "x12.txt");
+  posx1 = int(split(x01[0], ','));
+  String[] byk0 = loadStrings( "banjir2012.txt");
+  input0 = int(split(byk0[0], ','));  
+  String[] byk1 = loadStrings( "banjir2013.txt");
+  input1 = int(split(byk1[0], ',')); 
+  String[] byk2 = loadStrings( "banjir2014.txt");
+  input2 = int(split(byk2[0], ','));  
+  String[] daerah = loadStrings( "nama.txt");
+  nama = split(daerah[0], ',');
   
   fill(0);
   textSize(24);
-  text("Banyaknya Desa yang Mengalami Bencana Alam dalam Tiga Tahun Terakhir", 0, 30); 
-
-  fill(0);
-  textSize(20);
-  text("Petunjuk :", 0, 550); 
+  text("Banyaknya Desa yang Mengalami Bencana Alam 2012-2014", 0, 30); 
   
-  fill(0);
-  textSize(20);
-  text("Longsor", 100, 550);  
-  fill(0);
-  rect(100,560,50,10);
-   
-  fill(0);
-  textSize(20);
-  text("Banjir", 200, 550); 
-  fill(255,0,0);
-  rect(200,560,50,10);
-  
-  fill(0);
-  textSize(20);
-  text("Gempa", 300, 550); 
-  fill(0,255,0);
-  rect(300,560,50,10);
-    
-  fill(0);
-  textSize(20);
-  text("Angin", 400, 550); 
-  fill(0,0,255);
-  rect(400,560,50,10);
-    
-  fill(0);
-  textSize(20);
-  text("Kebakaran", 500, 550); 
-  fill(100,100,100);
-  rect(500,560,50,10);
 }
 
 void grafik(int a)
 {
-   fill(0);
-   rect(820,510,10,-longsor[a]/4);
-   textSize(12);
-   text(longsor[a], 818, 510-longsor[a]/4);
-   
-   fill(255,0,0);
-   rect(850,510,10,-banjir[a]/4);
-   textSize(12);
-   text(banjir[a], 848, 510-banjir[a]/4);
-   
-   fill(0,255,0);
-   rect(880,510,10,-gempa[a]/4);
-   textSize(12);
-   text(gempa[a], 878, 510-gempa[a]/4);
-   
-   fill(0,0,255);
-   rect(910,510,10,-angin[a]/4);
-   textSize(12);
-   text(angin[a], 908, 510-angin[a]/4);
-   
-   fill(100,100,100);
-   rect(940,510,10,-kebakaran[a]/4);
-   textSize(12);
-   text(kebakaran[a], 938, 510-kebakaran[a]/4);
-   
-    fill(0);
+  fill(0);
+  rect(820,510,10,-input0[a]);
+  textSize(12);
+  text(input0[a], 818, 510-input0[a]);
+  text("2012", 810, 530);
+  
+  fill(0);
+  rect(850,510,10,-input1[a]);
+  textSize(12);
+  text(input1[a], 850, 510-input1[a]);
+  text("2013", 845, 530);
+  
+  fill(0);
+  rect(880,510,10,-input2[a]);
+  textSize(12);
+  text(input2[a], 880, 510-input2[a]);
+  text("2014", 880, 530);
+  
+  fill(0);
   textSize(24);
   text(nama[a], 800, 100); 
-
 }
 
 void koordinat(int x1, int x2, int y1, int y2, int urutan)
 {
-   if((x1<mouseX) &&(mouseX<x2) &&(mouseY>y1)&&(mouseY<y2))
+  if((x1<mouseX) &&(mouseX<x2) &&(mouseY>y1)&&(mouseY<y2))
   {
     grafik(urutan);
   } 
 }
 
+void koordinat1()
+{
+  for(int i=0; i<5;i++)
+  {
+
+    if((posx[i]<mouseX) &&(mouseX<posx1[i]) &&(mouseY>50)&&(mouseY<80) && mousePressed)
+    {
+      String[] byk0=null;
+      String[] byk1=null;
+      String[] byk2=null;
+      if (i==0) 
+      {
+        byk0 = loadStrings("banjir2012.txt");
+        byk1 = loadStrings("banjir2013.txt");
+        byk2 = loadStrings("banjir2014.txt");
+      }
+      if (i==1) 
+      {
+        byk0 = loadStrings("gempa2012.txt");
+        byk1 = loadStrings("gempa2013.txt");
+        byk2 = loadStrings("gempa2014.txt");
+      }
+      if (i==2) 
+      {
+        byk0 = loadStrings("angin2012.txt");
+        byk1 = loadStrings("angin2013.txt");
+        byk2 = loadStrings("angin2014.txt");
+      }
+      if (i==3) 
+      {
+        byk0 = loadStrings("longsor2012.txt");
+        byk1 = loadStrings("longsor2013.txt");
+        byk2 = loadStrings("longsor2014.txt");
+      }
+      if (i==4) 
+      {
+        byk0 = loadStrings("kebakaran2012.txt");
+        byk1 = loadStrings("kebakaran2013.txt");
+        byk2 = loadStrings("kebakaran2014.txt");
+      }
+      input0 = int(split(byk0[0], ','));  
+      input1 = int(split(byk1[0], ','));  
+      input2 = int(split(byk2[0], ','));  
+    }
+  }
+}
+
 void draw() {
   image(img, 10, 100);
   
-   fill(255);
-   rect(790,510,300,-410);
-   fill(255);
-   rect(790,110,300,-32);
- println(mouseX,mouseY);
- for (int i=0; i<x1.length; i++)
- {
-   koordinat(x1[i],x2[i],y1[i],y2[i],i);
- }
+  fill(0,0,300);
+  rect(10,50,60,30);
+  fill(255);
+  textSize(20);
+  text("Banjir", 10, 70); 
+  
+  fill(139,69,19);
+  rect(100,50,70,30);
+  fill(255);
+  textSize(20);
+  text("Gempa", 100, 70); 
+  
+  fill(132,112,255);
+  rect(200,50,60,30);
+  fill(255);
+  textSize(20);
+  text("Angin", 200, 70); 
+  
+  fill(165,42,42);
+  rect(290,50,80,30);
+  fill(255);
+  textSize(20);
+  text("Longsor", 290, 70); 
+
+  fill(255,0,0);
+  rect(400,50,100,30);
+  fill(255);
+  textSize(20);
+  text("Kebakaran", 400, 70); 
+  
+  fill(255);
+  rect(790,510,300,-410);
+  fill(255);
+  rect(790,110,300,-32);
+     
+  println(mouseX,mouseY);
+  koordinat1();
+
+  
+  for (int i=0; i<x1.length; i++)
+  {
+    koordinat(x1[i],x2[i],y1[i],y2[i],i);
+  }
+
 }
