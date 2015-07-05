@@ -1,7 +1,12 @@
+import ddf.minim.*;
+
 PImage img;
 int[] x1,x2,y1,y2,input0,input1,input2,posx,posx1,banjir1;
 String[] nama;
- 
+Minim minim;
+AudioPlayer player;
+AudioInput input;
+
 void setup() {
   size(1024,600);
   img = loadImage("Indonesia.png");
@@ -82,30 +87,45 @@ void koordinat1()
         byk0 = loadStrings("banjir2012.txt");
         byk1 = loadStrings("banjir2013.txt");
         byk2 = loadStrings("banjir2014.txt");
+        minim = new Minim(this);
+        player = minim.loadFile("banjir.mp3");
+        player.loop();
       }
       if (i==1) 
       {
         byk0 = loadStrings("gempa2012.txt");
         byk1 = loadStrings("gempa2013.txt");
         byk2 = loadStrings("gempa2014.txt");
+        minim = new Minim(this);
+        player = minim.loadFile("gempa.mp3");
+        player.loop();
       }
       if (i==2) 
       {
         byk0 = loadStrings("angin2012.txt");
         byk1 = loadStrings("angin2013.txt");
         byk2 = loadStrings("angin2014.txt");
+        minim = new Minim(this);
+        player = minim.loadFile("angin.mp3");
+        player.loop();
       }
       if (i==3) 
       {
         byk0 = loadStrings("longsor2012.txt");
         byk1 = loadStrings("longsor2013.txt");
         byk2 = loadStrings("longsor2014.txt");
+        minim = new Minim(this);
+        player = minim.loadFile("longsor.mp3");
+        player.loop();
       }
       if (i==4) 
       {
         byk0 = loadStrings("kebakaran2012.txt");
         byk1 = loadStrings("kebakaran2013.txt");
         byk2 = loadStrings("kebakaran2014.txt");
+        minim = new Minim(this);
+        player = minim.loadFile("kebakaran.mp3");
+        player.loop();
       }
       input0 = int(split(byk0[0], ','));  
       input1 = int(split(byk1[0], ','));  
